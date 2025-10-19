@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality Education</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #ffb6e9 0%, #ff6ec4 25%, #f7971e 50%, #43cea2 75%, #6dd5ed 100%);
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #e75480;
+            color: #fff;
+            padding: 20px 0 20px 0;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 16px rgba(231, 84, 128, 0.18);
+        }
+        .header-content {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            justify-content: space-between;
+        }
+        header h1 {
+            margin: 0 0 0 40px;
+            font-size: 2.5em;
+            letter-spacing: 1px;
+            color: #fff;
+        }
+        nav {
+            margin-top: 0;
+            margin-left: 0;
+            margin-right: 40px;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 700;
+            transition: box-shadow 0.3s, background 0.3s, color 0.3s;
+            padding: 8px 18px;
+            border-radius: 5px;
+            position: relative;
+            font-size: 1.35em;
+        }
+        nav a::after {
+            content: "";
+            display: block;
+            position: absolute;
+            left: 18px;
+            right: 18px;
+            bottom: 4px;
+            height: 3px;
+            background: #fff;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+        nav a:hover::after,
+        nav a:focus::after {
+            transform: scaleX(1);
+        }
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: transparent;
+            box-shadow: none;
+            border-radius: 8px;
+            padding: 0;
+        }
+        .topic-box {
+            background: linear-gradient(135deg, #eaf1fb 0%, #fff 100%);
+            box-shadow: 0 4px 16px rgba(33,147,176,0.13);
+            border-radius: 18px;
+            margin: 32px 0;
+            padding: 38px 32px 32px 32px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 8px solid #2d6cdf;
+            position: relative;
+        }
+        .topic-box#about {
+            border-top-color: #2193b0;
+            background: linear-gradient(135deg, #f8ffae 0%, #43cea2 100%);
+            box-shadow: 0 8px 32px rgba(67,206,162,0.18);
+            border: 2px solid #2193b0;
+        }
+        .topic-box#about .topic-icon {
+            color: #43cea2;
+            text-shadow: 0 2px 8px #2193b033;
+        }
+        .topic-box#features {
+            border-top-color: #2193b0;
+            background: linear-gradient(135deg, #f8ffae 0%, #43cea2 100%);
+            box-shadow: 0 8px 32px rgba(67,206,162,0.18);
+            border: 2px solid #2193b0;
+        }
+        .topic-box#goals {
+            border-top-color: #2193b0;
+            background: linear-gradient(135deg, #f8ffae 0%, #43cea2 100%);
+            box-shadow: 0 8px 32px rgba(67,206,162,0.18);
+            border: 2px solid #2193b0;
+        }
+        .topic-box#contact {
+            border-top-color: #2193b0;
+            background: linear-gradient(135deg, #f8ffae 0%, #43cea2 100%);
+            box-shadow: 0 8px 32px rgba(67,206,162,0.18);
+            border: 2px solid #2193b0;
+        }
+        .topic-icon {
+            font-size: 2.5em;
+            margin-bottom: 12px;
+            color: #2193b0;
+            display: inline-block;
+        }
+        .topic-box#features .topic-icon { color: #6dd5ed; }
+        .topic-box#goals .topic-icon { color: #1a4ca0; }
+        .topic-box#contact .topic-icon { color: #2d6cdf; }
+        
+        .topic-box:hover, .topic-box:focus-within {
+            transform: scale(1.07);
+            box-shadow: 0 16px 40px rgba(33,147,176,0.22);
+            z-index: 2;
+        }
+        .section-divider {
+            width: 80%;
+            margin: 40px auto;
+            border: none;
+            border-top: 3px solid #6dd5ed;
+            opacity: 0.5;
+        }
+        h2 {
+            color: #2d6cdf;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .feature {
+            flex: 1 1 250px;
+            background: #eaf1fb;
+            border-radius: 6px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.08);
+        }
+        .feature:hover, .feature:focus {
+            transform: scale(1.07);
+            box-shadow: 0 8px 24px rgba(33,147,176,0.18);
+        }
+        .feature h3 {
+            margin-top: 0;
+            color: #1a4ca0;
+        }
+        footer {
+            background: #e75480;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        .goals-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .goal-box {
+            background: #fff;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .goal-box:hover {
+            transform: scale(1.07);
+            box-shadow: 0 8px 24px rgba(33,147,176,0.18);
+            z-index: 2;
+        }
+        .goal-emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        .goal-text {
+            font-size: 1.1em;
+            color: #333;
+        }
+        .topic-box#contact a {
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .topic-box#contact a:hover,
+        .topic-box#contact a:focus {
+            transform: scale(1.15);
+            box-shadow: 0 4px 16px rgba(33,147,176,0.18);
+            z-index: 2;
+        }
+        .contact-links {
+            display: flex;
+            flex-direction: row;
+            gap: 28px;
+            margin-top: 16px;
+            justify-content: flex-start;
+        }
+        .contact-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 64px;
+            height: 64px;
+            background: #fff;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(33,147,176,0.10);
+            transition: transform 0.3s, box-shadow 0.3s;
+            padding: 0;
+            text-decoration: none;
+        }
+        .contact-links a:hover,
+        .contact-links a:focus {
+            transform: scale(1.18);
+            box-shadow: 0 8px 24px rgba(33,147,176,0.18);
+            z-index: 2;
+        }
+        .icon-circle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: transparent;
+            box-shadow: none;
+            margin: 0 auto;
+        }
+
+        .icon-circle svg {
+            display: block;
+            margin: 0 auto;
+        }
+        .contact-links.contact-fixed {
+            position: fixed;
+            top: 120px;
+            left: 240px;
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 22px;
+            background: none;
+            box-shadow: none;
+        }
+
+        .contact-links.contact-fixed a {
+            width: 56px;
+            height: 56px;
+            margin: 0;
+        }
+
+        .contact-links.contact-fixed .icon-circle {
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .contact-links.contact-fixed svg {
+            width: 32px;
+            height: 32px;
+        }
+    </style>
+</head>
+<body>
+                </svg>
+            </span>
+        </a>
+    </div>
+    <header>
+        <div class="header-content">
+            <h1>Quality Education</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#goals">Features</a>
+            </nav>
+        </div>
+    </header>
+    <div class="container">
+        <div class="topic-box" id="about">
+            <span class="topic-icon">🎓</span>
+            <h2>Quality Education</h2>
+            <p>The focus of this project is to sustain a development of Quality Education that ensures relevance, and effectiveness. It aims to develop a quality education as providing learners with the knowledge, skill, and values This website Ensures that all learners, regardless of their background, gender, or socioeconomic status, have equal access to education. By promoting innovative teaching methods, supporting equitable access to education, and focusing on real-world application, we empower individuals to achieve their full potential and contribute to society..</p>
+        </div>
+        <div class="topic-box" id="goals">
+            <span class="topic-icon">🎯</span>
+            <h2>The Goals</h2>
+            <p>To ensure that we achieve the Global Goals, everyone can contribute. Take action to guarantee high-quality education by using these ten goals:</p>
+            <div class="goals-list">
+                <div class="goal-box"><span class="goal-emoji">🌍</span> <span class="goal-text">Ensure inclusive and equitable quality education for all.</span></div>
+                <div class="goal-box"><span class="goal-emoji">📖</span> <span class="goal-text">Promote lifelong learning opportunities.</span></div>
+                <div class="goal-box"><span class="goal-emoji">👶</span> <span class="goal-text">Support early childhood development and care.</span></div>
+                <div class="goal-box"><span class="goal-emoji">👩‍🏫</span> <span class="goal-text">Improve teacher training and professional development.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🏫</span> <span class="goal-text">Provide safe, accessible, and supportive learning environments.</span></div>
+                <div class="goal-box"><span class="goal-emoji">💻</span> <span class="goal-text">Integrate technology and modern resources in education.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🤝</span> <span class="goal-text">Encourage community and parental involvement.</span></div>
+                <div class="goal-box"><span class="goal-emoji">⚖️</span> <span class="goal-text">Reduce disparities in education access and outcomes.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🌐</span> <span class="goal-text">Foster global citizenship and sustainable development awareness.</span></div>
+                <div class="goal-box"><span class="goal-emoji">💰</span> <span class="goal-text">Advocate for increased investment in education.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🚻</span> <span class="goal-text">Promote gender equality in education.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🧠</span> <span class="goal-text">Support mental health and well-being for students and teachers.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🎨</span> <span class="goal-text">Encourage creativity, innovation, and critical thinking.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🔧</span> <span class="goal-text">Expand access to vocational and technical training.</span></div>
+                <div class="goal-box"><span class="goal-emoji">🛡️</span> <span class="goal-text">Strengthen digital literacy and online safety.</span></div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Quality Education Initiative By khaterine Baguinon
+    </footer>
+    <script>
+        window.onbeforeunload = function () {
+            window.scrollTo(0, 0);
+        };
+    </script>
+</body>
+</html>
